@@ -6,7 +6,7 @@
         static void Main(string[] args)
         {
             /// 1-Extension Methods
-            void ExtensionMethods()
+            void Extension_Method()
             {
                 int number = 14;
 
@@ -14,11 +14,17 @@
                     Console.WriteLine("Is Between");
                 else
                     Console.WriteLine("Is Not");
+
+                ///WAY 1: Extension method syntax (what you write)
+                    // bool result1 = number.CheckNumberBetween(10, 40);
+
+                /// WAY 2: What actually happens (compiler generates this)
+                    // bool result2 = ExtensionMethods.checkNumberBetween(number, 10, 40);
             }
-            // ExtensionMethods();
+            // Extension_Method();
 
             /// 2- Delegates
-            
+
             void DelegatesMethod()
             {
                 Delegates delegates=new Delegates(20,10);
