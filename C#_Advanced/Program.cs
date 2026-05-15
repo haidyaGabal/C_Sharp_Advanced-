@@ -15,8 +15,15 @@
                 else
                     Console.WriteLine("Is Not");
             }
-            ExtensionMethods();
+            // ExtensionMethods();
 
+            /// 2- Delegates
+            
+            void DelegatesMethod()
+            {
+                Delegates delegates=new Delegates(20,10);
+            }
+            DelegatesMethod();
 
 
 
