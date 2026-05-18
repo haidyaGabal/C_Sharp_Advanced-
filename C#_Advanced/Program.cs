@@ -29,7 +29,19 @@
             {
                 Delegates delegates=new Delegates(20,10);
             }
-            DelegatesMethod();
+            //  DelegatesMethod();
+
+
+            ///3- MultithreadingBasics
+          
+            var b1 = new Thread(MultithreadingBasics.ProcessBatch1);
+            b1.Priority=ThreadPriority.Highest;
+            var b2 = new Thread(MultithreadingBasics.ProcessBatch2);
+            b2.Priority=ThreadPriority.Lowest;
+            b1.Start();
+            b2.Start();
+            ///can add priority for this thread
+         
 
 
 
