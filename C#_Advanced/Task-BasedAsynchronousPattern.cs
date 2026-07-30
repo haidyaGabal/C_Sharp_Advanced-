@@ -9,14 +9,14 @@ namespace C__Advanced
 {
     internal class Task_BasedAsynchronousPattern
     {
-        Return a Task or Task<TResult>
+       // Return a Task or Task<TResult>
 
-Use async / await for natural consumption
+        //Use async / await for natural consumption
 
-Follow naming convention MethodNameAsync
+        //Follow naming convention MethodNameAsync
 
-Report progress via IProgress<T> if needed
+        //Report progress via IProgress<T> if needed
 
-Support cancellation via CancellationToken
+        //Support cancellation via CancellationToken
     }
 }
