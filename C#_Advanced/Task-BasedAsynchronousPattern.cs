@@ -35,7 +35,22 @@ namespace C__Advanced
         //Follow naming convention MethodNameAsync
 
         //Report progress via IProgress<T> if needed
+       public  async Task DownloadAsync(IProgress<int> progress)
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                await Task.Delay(1000);   // Simulate work
+
+                progress.Report(i * 20);  // Report progress
+            }
+        }
+
 
         //Support cancellation via CancellationToken
     }
+
+
+
+    
+
 }

@@ -1,9 +1,11 @@
-﻿namespace C__Advanced
+﻿using System.Threading.Tasks;
+
+namespace C__Advanced
 {
     internal class Program
     {
    
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             /// 1-Extension Methods
             void Extension_Method()
@@ -41,7 +43,31 @@
             b1.Start();
             b2.Start();
             ///can add priority for this thread
-         
+            ///
+
+            ///4-
+            ///
+     
+            await Task_Based();
+            static async Task Task_Based()
+            {
+                Task_BasedAsynchronousPattern tap = new Task_BasedAsynchronousPattern();
+
+                // Create a progress object
+                IProgress<int> progress = new Progress<int>(value =>
+                {
+                    Console.WriteLine($"Progress: {value}%");
+                });
+
+                // Call the method
+                await tap.DownloadAsync(progress);
+
+                Console.WriteLine("Download completed!");
+            }
+
+
+
+
 
 
 
