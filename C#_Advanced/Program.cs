@@ -69,7 +69,17 @@ namespace C__Advanced
                 }
 
                 // Change filter method
-        
+                filter.FilterMethod = filter.GreaterThan10;
+
+                Console.WriteLine("\n=== Numbers Greater Than 10 ===");
+
+                foreach (int number in numbers)
+                {
+                    if (filter.FilterMethod(number))
+                    {
+                        Console.WriteLine(number);
+                    }
+                }
 
 
                 // 2. Transform Numbers
@@ -82,9 +92,17 @@ namespace C__Advanced
                     Console.WriteLine(transform.TransformMethod(number));
                 }
 
-            
+                // Change transformation method
+                transform.TransformMethod = transform.SquareNumber;
+
+                Console.WriteLine("\n=== Square Numbers ===");
+
+                foreach (int number in numbers)
+                {
+                    Console.WriteLine(transform.TransformMethod(number));
+                }
             }
-             filterandtransform();
+            // filterandtransform();
 
             //bulit in delegates
 

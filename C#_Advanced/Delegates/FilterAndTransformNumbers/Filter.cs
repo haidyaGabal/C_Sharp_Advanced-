@@ -14,19 +14,18 @@ namespace C__Advanced.Delegates.FilterAndTransformNumbers
         public Filter()
         {
             FilterMethod = IsEven;
-            FilterMethod += GreaterThan10;
         }
 
         #endregion
 
         #region Filtering Methods
 
-         bool IsEven(int number)
+        public bool IsEven(int number)
         {
             return number % 2 == 0;
         }
 
-         bool GreaterThan10(int number)
+        public bool GreaterThan10(int number)
         {
             return number > 10;
         }

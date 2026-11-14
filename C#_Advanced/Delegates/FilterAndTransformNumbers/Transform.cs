@@ -20,12 +20,12 @@ namespace C__Advanced.Delegates.FilterAndTransformNumbers
 
         #region Transformation Methods
 
-         int DoubleNumber(int number)
+        public int DoubleNumber(int number)
         {
             return number * 2;
         }
 
-         int SquareNumber(int number)
+        public int SquareNumber(int number)
         {
             return number * number;
         }
