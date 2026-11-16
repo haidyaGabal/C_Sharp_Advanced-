@@ -4,6 +4,7 @@ using C__Advanced.Delegates.FilterAndTransformNumbers;
 using C__Advanced.Delegates.SimpleLoggingSystem;
 using C__Advanced.Events;
 using C__Advanced.Events.EventTimer;
+using C__Advanced.Extesion_Methods;
 
 namespace C__Advanced
 {
@@ -29,7 +30,10 @@ namespace C__Advanced
             // 6. Events
             // Events();
             //7.Timer Ex
-            TimerEx();
+            // TimerEx();
+            //8.Extinsion Methods
+            ExMethods();
+
 
             // 7. Multithreading Basics
             // Multithreading();
@@ -169,6 +173,10 @@ namespace C__Advanced
             calculateSalary.SalaryCompleted -= emp1.ReceiveSalary;
             calculateSalary.SalaryCompleted -= emp2.ReceiveSalary;
         }
+
+        #endregion
+
+        #region Timer Event Ex
         static void TimerEx()
         {
             LegedTimer timer = new LegedTimer(5);
@@ -180,6 +188,34 @@ namespace C__Advanced
                 Console.WriteLine("Timer finished!");
 
             timer.Start();
+        }
+
+
+        #endregion
+
+        #region Extentsion Methods
+       static void ExMethods()
+        {
+            ///string Ex
+            string text = "Welcome to C Sharp Advanced";
+            int count = text.NumberOfWords();
+            Console.WriteLine(count);
+
+            ///int Ex
+            int number = 10;
+            Console.WriteLine(number.ISEven()); // True
+            Console.WriteLine(7.ISEven());      // False
+
+            ///class Ex
+            Employee employee = new Employee
+            {
+                Id = 1,
+                Name = "Ahmed",
+                Description = "Junior .NET Developer"
+            };
+
+            employee.Create();
+            employee.Hire();
         }
         #endregion
 
