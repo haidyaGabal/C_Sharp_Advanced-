@@ -1,155 +1,225 @@
-﻿using C__Advanced.Delegates.BasicNotificationSystem;
+﻿
+using C__Advanced.Delegates.BasicNotificationSystem;
 using C__Advanced.Delegates.FilterAndTransformNumbers;
 using C__Advanced.Delegates.SimpleLoggingSystem;
-using System.Threading.Tasks;
+using C__Advanced.Events;
+using C__Advanced.Events.EventTimer;
 
 namespace C__Advanced
 {
     internal class Program
     {
-   
         static async Task Main(string[] args)
         {
-            /// 1-Extension Methods
-            void Extension_Method()
-            {
-                int number = 14;
-
-                if (number.checkNumberBetween(10, 40))
-                    Console.WriteLine("Is Between");
-                else
-                    Console.WriteLine("Is Not");
-
-                ///WAY 1: Extension method syntax (what you write)
-                    // bool result1 = number.CheckNumberBetween(10, 40);
-
-                /// WAY 2: What actually happens (compiler generates this)
-                    // bool result2 = ExtensionMethods.checkNumberBetween(number, 10, 40);
-            }
+            // 1. Extension Methods
             // Extension_Method();
 
-            /// 2- Delegates
+            // 2. Delegates
+            // DelegatesMethod();
 
-            void DelegatesMethod()
-            {
-                Delegates.Delegates delegates=new Delegates.Delegates(20,10);
-            }
-            //  DelegatesMethod();
+            // 3. Notification System
+            // SimpleNotification();
 
-            //SimpleNotification
+            // 4. Filter And Transform
+            // FilterAndTransform();
 
+            // 5. Built-in Delegates
+            // BuiltInDelegates();
+
+            // 6. Events
+            // Events();
+            //7.Timer Ex
+            TimerEx();
+
+            // 7. Multithreading Basics
+            // Multithreading();
+
+            // 8. Task-Based Asynchronous Programming
+            // await Task_Based();
+        }
+
+        #region Extension Methods
+
+        static void Extension_Method()
+        {
+            int number = 14;
+
+            if (number.checkNumberBetween(10, 40))
+                Console.WriteLine("Is Between");
+            else
+                Console.WriteLine("Is Not");
+        }
+
+        #endregion
+
+        #region Delegates
+
+        static void DelegatesMethod()
+        {
+            Delegates.Delegates delegates =
+                new Delegates.Delegates(20, 10);
+        }
+
+        #endregion
+
+        #region Notification System
+
+        static void SimpleNotification()
+        {
             EmailNotifications email = new EmailNotifications();
             SMSNotification sms = new SMSNotification();
 
             Notify notifier = email.Send;
-
             notifier += sms.Send;
 
             Order order = new Order(notifier);
 
-         //   order.CreateOrder();
-
-            //filter and transform 
-
-            void filterandtransform()
-            {
-                int[] numbers = { 2, 5, 8, 12, 15, 20 };
-
-                // 1. Filter Numbers
-                Filter filter = new Filter();
-
-                Console.WriteLine("=== Filter Numbers ===");
-
-                foreach (int number in numbers)
-                {
-                    if (filter.FilterMethod(number))
-                    {
-                        Console.WriteLine(number);
-                    }
-                }
-
-                // Change filter method
-                filter.FilterMethod = filter.GreaterThan10;
-
-                Console.WriteLine("\n=== Numbers Greater Than 10 ===");
-
-                foreach (int number in numbers)
-                {
-                    if (filter.FilterMethod(number))
-                    {
-                        Console.WriteLine(number);
-                    }
-                }
-
-
-                // 2. Transform Numbers
-                Transform transform = new Transform();
-
-                Console.WriteLine("\n=== Double Numbers ===");
-
-                foreach (int number in numbers)
-                {
-                    Console.WriteLine(transform.TransformMethod(number));
-                }
-
-                // Change transformation method
-                transform.TransformMethod = transform.SquareNumber;
-
-                Console.WriteLine("\n=== Square Numbers ===");
-
-                foreach (int number in numbers)
-                {
-                    Console.WriteLine(transform.TransformMethod(number));
-                }
-            }
-            // filterandtransform();
-
-            //bulit in delegates
-
-            builIndelegate indelegate = new builIndelegate();
-            indelegate.simple();
-
-
-            ///3- MultithreadingBasics
-
-            var b1 = new Thread(MultithreadingBasics.ProcessBatch1);
-            b1.Priority=ThreadPriority.Highest;
-            var b2 = new Thread(MultithreadingBasics.ProcessBatch2);
-            b2.Priority=ThreadPriority.Lowest;
-           // b1.Start();
-            //b2.Start();
-            ///can add priority for this thread
-            ///
-
-            ///4-
-            ///
-     
-          //  await Task_Based();
-            static async Task Task_Based()
-            {
-                Task_BasedAsynchronousPattern tap = new Task_BasedAsynchronousPattern();
-
-                // Create a progress object
-                IProgress<int> progress = new Progress<int>(value =>
-                {
-                    Console.WriteLine($"Progress: {value}%");
-                });
-
-                // Call the method
-                await tap.DownloadAsync(progress);
-
-                Console.WriteLine("Download completed!");
-            }
-
-
-
-
-
-
-
-
-
-
+            // order.CreateOrder();
         }
+
+        #endregion
+
+        #region Filter And Transform
+
+        static void FilterAndTransform()
+        {
+            int[] numbers = { 2, 5, 8, 12, 15, 20 };
+
+            Filter filter = new Filter();
+
+            Console.WriteLine("=== Filter Numbers ===");
+
+            foreach (int number in numbers)
+            {
+                if (filter.FilterMethod(number))
+                    Console.WriteLine(number);
+            }
+
+            // Change filter method
+            filter.FilterMethod = filter.GreaterThan10;
+
+            Console.WriteLine("\n=== Numbers Greater Than 10 ===");
+
+            foreach (int number in numbers)
+            {
+                if (filter.FilterMethod(number))
+                    Console.WriteLine(number);
+            }
+
+            Transform transform = new Transform();
+
+            Console.WriteLine("\n=== Double Numbers ===");
+
+            foreach (int number in numbers)
+            {
+                Console.WriteLine(transform.TransformMethod(number));
+            }
+
+            // Change transformation method
+            transform.TransformMethod = transform.SquareNumber;
+
+            Console.WriteLine("\n=== Square Numbers ===");
+
+            foreach (int number in numbers)
+            {
+                Console.WriteLine(transform.TransformMethod(number));
+            }
+        }
+
+        #endregion
+
+        #region Built-in Delegates
+
+        static void BuiltInDelegates()
+        {
+            builIndelegate indelegate = new builIndelegate();
+            // indelegate.simple();
+        }
+
+        #endregion
+
+        #region Events
+
+        static void Events()
+        {
+            CalculateSalary calculateSalary = new CalculateSalary();
+
+            Employees emp1 = new Employees
+            {
+                Id = 1,
+                Name = "Ahmed",
+                Salary = 10000
+            };
+
+            Employees emp2 = new Employees
+            {
+                Id = 2,
+                Name = "Ali",
+                Salary = 12000
+            };
+
+            // Subscribe employees to the event
+            calculateSalary.SalaryCompleted += emp1.ReceiveSalary;
+            calculateSalary.SalaryCompleted += emp2.ReceiveSalary;
+
+            // Raise the event
+            calculateSalary.CreateSalarySheet();
+
+            // Unsubscribe employees
+            calculateSalary.SalaryCompleted -= emp1.ReceiveSalary;
+            calculateSalary.SalaryCompleted -= emp2.ReceiveSalary;
+        }
+        static void TimerEx()
+        {
+            LegedTimer timer = new LegedTimer(5);
+
+            timer.TickAction += remaining =>
+                Console.WriteLine($"Remaining: {remaining} seconds");
+
+            timer.TimerEnded += () =>
+                Console.WriteLine("Timer finished!");
+
+            timer.Start();
+        }
+        #endregion
+
+        #region Multithreading
+
+        static void Multithreading()
+        {
+            Thread b1 = new Thread(MultithreadingBasics.ProcessBatch1)
+            {
+                Priority = ThreadPriority.Highest
+            };
+
+            Thread b2 = new Thread(MultithreadingBasics.ProcessBatch2)
+            {
+                Priority = ThreadPriority.Lowest
+            };
+
+            // b1.Start();
+            // b2.Start();
+        }
+
+        #endregion
+
+        #region Task-Based Asynchronous Programming
+
+        static async Task Task_Based()
+        {
+            Task_BasedAsynchronousPattern tap =
+                new Task_BasedAsynchronousPattern();
+
+            IProgress<int> progress = new Progress<int>(value =>
+            {
+                Console.WriteLine($"Progress: {value}%");
+            });
+
+            await tap.DownloadAsync(progress);
+
+            Console.WriteLine("Download completed!");
+        }
+
+        #endregion
     }
 }
