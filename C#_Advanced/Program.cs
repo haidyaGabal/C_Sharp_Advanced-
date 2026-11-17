@@ -5,6 +5,7 @@ using C__Advanced.Delegates.SimpleLoggingSystem;
 using C__Advanced.Events;
 using C__Advanced.Events.EventTimer;
 using C__Advanced.Extesion_Methods;
+using C__Advanced.Linq;
 
 namespace C__Advanced
 {
@@ -32,8 +33,9 @@ namespace C__Advanced
             //7.Timer Ex
             // TimerEx();
             //8.Extinsion Methods
-            ExMethods();
-
+            //ExMethods();
+            //9.LINQ Exampls
+            LINQEX();
 
             // 7. Multithreading Basics
             // Multithreading();
@@ -216,6 +218,18 @@ namespace C__Advanced
 
             employee.Create();
             employee.Hire();
+        }
+        #endregion
+
+        #region LINQ Examples
+
+        static void LINQEX()
+        {
+            LINQExamples linq = new LINQExamples();
+
+            linq.IntExample();
+             linq.StringExample();
+             linq.ObjectExample();
         }
         #endregion
 
