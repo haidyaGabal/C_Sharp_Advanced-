@@ -6,6 +6,7 @@ using C__Advanced.Events;
 using C__Advanced.Events.EventTimer;
 using C__Advanced.Extesion_Methods;
 using C__Advanced.Linq;
+using System.Text.Json;
 
 namespace C__Advanced
 {
@@ -34,8 +35,10 @@ namespace C__Advanced
             // TimerEx();
             //8.Extinsion Methods
             //ExMethods();
-            //9.LINQ Exampls
-            LINQEX();
+            //9.1.LINQ Exampls
+            // LINQEX();
+            //9.2.LoadData
+            LoadData();
 
             // 7. Multithreading Basics
             // Multithreading();
@@ -230,6 +233,16 @@ namespace C__Advanced
             linq.IntExample();
              linq.StringExample();
              linq.ObjectExample();
+
+        }
+        static void LoadData()
+        {
+            DealingWithLINQ dealing = new DealingWithLINQ();
+
+            dealing.FirstExample();
+            dealing.LastExample();
+            dealing.WhereCondition();
+
         }
         #endregion
 
