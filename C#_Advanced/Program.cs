@@ -239,9 +239,12 @@ namespace C__Advanced
         {
             DealingWithLINQ dealing = new DealingWithLINQ();
 
-            dealing.FirstExample();
-            dealing.LastExample();
-            dealing.WhereCondition();
+            //  dealing.FirstExample();
+            //  dealing.LastExample();
+            //  dealing.WhereCondition();
+            //  dealing.Sorting();
+            //  dealing.Projection();
+            dealing.Aggregation();
 
         }
         #endregion
