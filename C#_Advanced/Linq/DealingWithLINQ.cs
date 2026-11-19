@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace C__Advanced.Linq
 {
@@ -120,6 +121,174 @@ namespace C__Advanced.Linq
 
     }
         #endregion
+
+        public void Sorting()
+        {
+            List<Product> products = LoadData();
+
+            Console.WriteLine("=== Sorting Products ===");
+
+            var cond = products.Where(x => x.price > 100).OrderBy(x => x.price).ToList();
+
+            foreach (var item in cond)
+            {
+                Console.WriteLine(
+                    $"Name: {item.name}, Price: {item.price}, Brand: {item.brand}");
+            }
+
+            Console.WriteLine("=== Multiple Sorting ===");
+
+            var cond2 = products.Where(x => x.price > 100).OrderBy(x => x.price)
+                .ThenBy(x => x.brand);
+
+            foreach (var item in cond2)
+            {
+                Console.WriteLine(
+                    $"Name: {item.name}, Price: {item.price}, Brand: {item.brand}");
+            }
+        }
+
+
+        public void Projection()
+        {
+            List<Product> products = LoadData();
+
+            Console.WriteLine("=== Projection Products ===");
+
+            // 1. Select one property
+            var cond1 = products.Select(x => x.name);
+
+            // 2. Select multiple properties
+            var cond2 = products.Select(x => new
+            {
+                x.name,
+                x.brand,
+                x.price
+            });
+
+            // 3. Rename properties
+            var cond3 = products.Select(x => new
+            {
+                ProductName = x.name,
+                Company = x.brand,
+                ProductPrice = x.price
+            });
+
+            // 4. Calculate discount
+            var cond4 = products.Select(x => new
+            {
+                x.name,
+                OriginalPrice = x.price,
+                FinalPrice = x.price * 0.90m
+            });
+
+            // 5. Conditional projection
+            var cond5 = products.Select(x => new
+            {
+                x.name,
+                Status = x.price > 500 ? "Expensive" : "Cheap"
+            });
+
+            // 6. Where + Select
+            var cond6 = products
+                .Where(x => x.price > 500)
+                .Select(x => new
+                {
+                    x.name,
+                    x.price
+                });
+
+            // 7. Distinct brands
+            var cond7 = products
+                .Select(x => x.brand)
+                .Distinct()
+                .ToList();
+
+            // 8. Select with index
+            var cond8 = products.Select((x, index) => new
+            {
+                Number = index + 1,
+                x.name
+            });
+            //9. 3condition 
+            var cond = products.Select(x => new
+            {
+                ProductName = x.name,
+
+                PriceLevel = x.price > 1000 ? "High" : x.price > 500
+                ? "Medium"
+                : "Low"
+            });
+
+            // Display example
+            foreach (var item in cond8)
+            {
+                Console.WriteLine(
+                    $"{item.Number} | name: {item.name}");
+            }
+        }
+
+
+        public void Aggregation()
+        {
+            List<Product> products = LoadData();
+
+            Console.WriteLine("=== LINQ Aggregation ===");
+
+            // 1. Count all products
+            var count = products.Count();
+
+            // 2. Count products with price > 500
+            var countExpensive = products.Count(x => x.price > 500);
+
+            // 3. Sum all prices
+            var total = products.Sum(x => x.price);
+
+            // 4. Average price
+            var average = products.Average(x => x.price);
+
+            // 5. Maximum price
+            var max = products.Max(x => x.price);
+
+            // 6. Minimum price
+            var min = products.Min(x => x.price);
+
+            // 7. Most expensive product => name of max product
+            var expensiveProduct = products.MaxBy(x => x.price);
+
+            // 8. Cheapest product
+            var cheapProduct = products.MinBy(x => x.price);
+
+            // 9. Aggregate
+            var aggregateTotal = products.Aggregate(
+                0m,
+                (total, item) => total + item.price
+            );
+            // grouping 
+
+            var countSumOrdreOverCat = products.GroupBy(a => a.category).
+                Select(a => new
+                {
+                    Category=a.Key,
+                    ordersCount=a.Count(),
+                    allPrice=a.Sum(a => a.price),
+
+                }).ToList();
+
+            
+
+            Console.WriteLine($"Count: {count}");
+            Console.WriteLine($"Expensive Products: {countExpensive}");
+            Console.WriteLine($"Total: {total}");
+            Console.WriteLine($"Average: {average}");
+            Console.WriteLine($"Max: {max}");
+            Console.WriteLine($"Min: {min}");
+            Console.WriteLine($"Most Expensive: {expensiveProduct?.name}");
+            Console.WriteLine($"Cheapest: {cheapProduct?.name}");
+            Console.WriteLine($"Aggregate Total: {aggregateTotal}");
+        }
+
+
     }
 }
 
