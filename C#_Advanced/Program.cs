@@ -38,12 +38,12 @@ namespace C__Advanced
             //9.1.LINQ Exampls
             // LINQEX();
             //9.2.LoadData
-            LoadData();
+           // LoadData();
 
-            // 7. Multithreading Basics
+            // 10. Multithreading Basics
             // Multithreading();
 
-            // 8. Task-Based Asynchronous Programming
+            // 11. Task-Based Asynchronous Programming
             // await Task_Based();
         }
 
