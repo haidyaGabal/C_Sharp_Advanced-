@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace C__Advanced
+namespace C__Advanced.Multithreading
 {
     /// <summary>
     /// i will use lock for thread this mean 

@@ -6,6 +6,7 @@ using C__Advanced.Events;
 using C__Advanced.Events.EventTimer;
 using C__Advanced.Extesion_Methods;
 using C__Advanced.Linq;
+using C__Advanced.Multithreading;
 using System.Text.Json;
 
 namespace C__Advanced
@@ -41,7 +42,7 @@ namespace C__Advanced
            // LoadData();
 
             // 10. Multithreading Basics
-            // Multithreading();
+             Multithreading();
 
             // 11. Task-Based Asynchronous Programming
             // await Task_Based();
@@ -265,6 +266,15 @@ namespace C__Advanced
 
             // b1.Start();
             // b2.Start();
+
+            //UseThreads threads = new UseThreads();
+            //threads.StartThreads();
+
+           // RaceConditioning race = new RaceConditioning();
+            //race.Threads();
+            UseThreadPool pool = new UseThreadPool();
+            pool.StartThreadPool();
+
         }
 
         #endregion
