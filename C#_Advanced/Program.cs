@@ -43,10 +43,10 @@ namespace C__Advanced
            // LoadData();
 
             // 10. Multithreading Basics
-             Multithreading();
+          //   Multithreading();
 
             // 11. Task-Based Asynchronous Programming
-            // await Task_Based();
+            Task_Based();
         }
 
         #region Extension Methods
@@ -284,17 +284,27 @@ namespace C__Advanced
 
         static async Task Task_Based()
         {
-            Task_BasedAsynchronousPattern tap =
-                new Task_BasedAsynchronousPattern();
+            //Task_BasedAsynchronousPattern tap =
+            //    new Task_BasedAsynchronousPattern();
 
-            IProgress<int> progress = new Progress<int>(value =>
-            {
-                Console.WriteLine($"Progress: {value}%");
-            });
+            //IProgress<int> progress = new Progress<int>(value =>
+            //{
+            //    Console.WriteLine($"Progress: {value}%");
+            //});
 
-            await tap.DownloadAsync(progress);
+            //await tap.DownloadAsync(progress);
 
-            Console.WriteLine("Download completed!");
+            //Console.WriteLine("Download completed!");
+
+            //TaskDetails taskDetails = new TaskDetails();
+            ParllelProgramming parllel = new ParllelProgramming();
+             parllel.UseParallelFor();
+            //parllel.UseParallelForEach();
+            //parllel.UseParallelInvoke();
+
+
+
+
         }
 
         #endregion
