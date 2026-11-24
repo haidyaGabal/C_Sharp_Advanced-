@@ -8,6 +8,7 @@ using C__Advanced.Events.EventTimer;
 using C__Advanced.Extesion_Methods;
 using C__Advanced.Linq;
 using C__Advanced.Multithreading;
+using C__Advanced.Reflection;
 using System.Text.Json;
 
 namespace C__Advanced
@@ -40,13 +41,15 @@ namespace C__Advanced
             //9.1.LINQ Exampls
             // LINQEX();
             //9.2.LoadData
-           // LoadData();
+            // LoadData();
 
             // 10. Multithreading Basics
-          //   Multithreading();
+            //   Multithreading();
 
             // 11. Task-Based Asynchronous Programming
-            Task_Based();
+            // Task_Based();
+            //12. reflaction
+            TypeReflaction();
         }
 
         #region Extension Methods
@@ -308,5 +311,11 @@ namespace C__Advanced
         }
 
         #endregion
+
+        static void TypeReflaction()
+        {
+            UseReflection use=new UseReflection();
+            use.Type();
+        }
     }
 }
